@@ -6,4 +6,4 @@
 3. To install all dependencies in the requirements.txt in one command `python -m pip install -r requirements.txt`.
 4. To start the project, move to your desired location and run `django-admin startproject BLOG`.
 5. To start an app use the command `python manage.py startapp <appname>`.
-6. The startapp command is used while in the root project folder i.e. /BLOG/ where `manage.py` is found. 
+6. The startapp command is used while in the root project folder i.e. blog-legendary-eureka/ where `manage.py` is found. 
