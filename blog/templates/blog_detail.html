@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block title %}
+  {{ blogpost.title }}
+{% endblock %}
+
+{% block content %}
+<h1>{{ blogpost.title }}</h1>
+
+<small>
+  Article by: {{ blogpost.author.first_name }}
+  {{ blogpost.author.last_name }} on {{ blogpost.publication_date }}
+
+  {% if user.is_authenticated %}
+    {% if user.id == blogpost.author.id %}
+      <a href="{% url 'update-post' blogpost.pk %}">Edit</a>
+      <a href="{% url 'delete-post' blogpost.pk %}">Delete</a>
+    {% endif %}
+  {% endif %}
+</small> <br />
+<hr>
+{{ blogpost.text|safe }}
+<br> <br />
+<hr>
+<form action="{% url 'like_post' blogpost.pk %}" method="post">
+  {% csrf_token %}
+  {% if user.is_authenticated %}
+  {% if liked %}
+  <button type="submit" name="blogpost_id" value="{{ blogpost.id }}"
+          class="button btn_danger">UnLike
+  </button>
+  {% else %}
+
+  <button type="submit" name="blogpost_id" value="{{ blogpost.id }}"
+          class="button btn_primary">Like
+  </button>
+  {% endif %}
+  {% else %}
+  <small><a  href = "{% url 'login' %}">Login</a>
+    or <a href = "{% url 'register' %}">Register</a> to like
+  </small>
+  {% endif %}
+   -{{ total_likes }} likes
+</form>
+
+
+<a href="{% url 'home' %}">Back to Homepage</a>
+
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}
+  Delete post
+{% endblock %}
+{% block content %}
+{% if user.is_authenticated %}
+{% if user.id == blogpost.author.id %}
+<h2>Delete Post</h2>
+
+<h3>Delete: {{ post.title }}</h3>
+<div>
+  <form method="post">
+    {% csrf_token %}
+    <strong>Are you sure?</strong>
+    <button>Delete Post!</button>
+  </form>
+</div>
+{% else %}
+<p>No posts to delete</p>
+{% endif %}
+{% else %}
+You cannot do that
+{% endif %}
+
+{% endblock %}

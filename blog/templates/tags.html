@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1> {{ tags }} posts</h1>
+
+{% if tag_posts %}
+<ul>
+{% for blogpost in tag_posts %}
+      <li>
+        <a href="{% url 'blog-detail' blogpost.pk %}">{{ blogpost.title }}</a>
+         - {{ blogpost.author.first_name }}
+            {{ blogpost.author.last_name }}
+          - {{ blogpost.publication_date }}
+
+            {% if user.is_authenticated %}
+              - <a href="{% url 'update-post' blogpost.pk %}">Edit</a>
+              - <a href="{% url 'delete-post' blogpost.pk %}">Delete</a>
+            {% endif %}
+        <br />
+        {{ blogpost.text|slice:":255" }} <small>
+          <a href="{% url 'blog-detail' blogpost.pk %}">read more...</a>
+      </small>
+      </li>
+{% endfor %}
+</ul>
+{% else %}
+There are no posts for this tag yet. <br />
+If you want to add posts for this tag
+<a href="{% url 'add-post' %}">Click here</a>
+
+{% endif %}
+{% endblock %}

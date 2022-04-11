@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}
+  Add a new post
+{% endblock %}
+{% block content %}
+{% if user.is_authenticated %}
+
+<h2>Add Post</h2>
+<div>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.media }}
+    {{ form.as_p }}
+    <button>Post</button>
+  </form>
+</div>
+<script>
+  let name = "{{ user.id }}";
+  document.getElementById("username").value = name;
+</script>
+
+{% endif %}
+
+{% endblock %}

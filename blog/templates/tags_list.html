@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}
+  Blog Tags
+{% endblock %}
+
+{% block content %}
+<h1>Blog Tags</h1>
+  {% for item in tag_menu_list %}
+    <h4>
+      <a href="{% url 'tag' item|slugify %}">{{ item }}</a>
+    </h4>
+  {% endfor %}
+
+
+{% endblock %}

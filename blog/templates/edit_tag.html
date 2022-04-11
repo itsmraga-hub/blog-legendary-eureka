@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}
+  Edit tag
+{% endblock %}
+{% block content %}
+{% if user.is_authenticated %}
+    <h2>Update Tag</h2>
+    <div>
+      <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button>Update tag</button>
+      </form>
+    </div>
+{% else %}
+<p>You're not allowed here</p>
+{% endif %}
+
+{% endblock %}

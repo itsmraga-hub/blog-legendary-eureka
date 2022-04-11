@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}
+  Add a new tag
+{% endblock %}
+{% block content %}
+{% if user.is_authenticated %}
+
+<h2>Add a tag</h2>
+<div>
+  <p>
+    Want to add a tag <li>
+  <a href="{% url 'add-tag' %}"></a>
+</li>
+  </p>
+</div>
+<div>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button>Add tag</button>
+  </form>
+</div>
+{% else %}
+
+You're not allowed here...
+
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}
+  Edit profile
+{% endblock %}
+{% block content %}
+
+<h2>Edit profile</h2>
+<div>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button>Edit profile</button>
+  </form>
+</div>
+
+{% endblock %}
