@@ -1,0 +1,11 @@
+/*Run the command manage.py collectstatic */
+
+body {
+background-color: red;
+color: red;
+font-weight: 1000;
+}
+
+.heading {
+    color: blue;
+}
