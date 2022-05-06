@@ -40,7 +40,7 @@ class BlogPost(models.Model):
 
     def get_absolute_url(self):
         # return reverse('home') - Returns to the homepage
-        return reverse('blog-detail', args=(str(self.id)))
+        return reverse('blog-detail', args=[str(self.id)])
 
 
 class Tag(models.Model):
