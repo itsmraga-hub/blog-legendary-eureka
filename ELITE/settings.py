@@ -25,7 +25,7 @@ SECRET_KEY = '1234'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['blog-legendary-eureka.herokuapp.com', 'www.blog-legendary-eureka.herokuapp.com', 'localhost']
 
 
 # Application definition
@@ -50,6 +50,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'ELITE.urls'
@@ -127,6 +128,8 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
+
+STATICFILES_STORAGE = 'whitenoise.storageCompressedManifestStaticFilesStorage'
 
 # Add the LOGIN_REDIRECT_URL = 'home' and LOGOUT_REDIRECT_URL = 'home' to redirect to home after logging in
 LOGIN_REDIRECT_URL = 'home'
