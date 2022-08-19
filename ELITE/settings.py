@@ -129,7 +129,7 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
 
-STATICFILES_STORAGE = 'whitenoise.storageCompressedManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Add the LOGIN_REDIRECT_URL = 'home' and LOGOUT_REDIRECT_URL = 'home' to redirect to home after logging in
 LOGIN_REDIRECT_URL = 'home'
